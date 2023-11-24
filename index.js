@@ -24,30 +24,21 @@ const getSkydiveList = async () => {
 
   const list = await page.evaluate(() =>{
 
-    const map = document.querySelectorAll(".BPAItem");
-   // const listItem2 = document.querySelector(".BPAItem"); 
-   
-  //  const text = listItem2.querySelector(".OMDirectoryResultAddress").innerText;
-  //  const author = listItem2.querySelector(".BPAOrgName").innerText;
-
-   //const listItem = document.querySelector(".BPAOrgName");
-
-   //const text = listItem2.querySelector(".OMDirectoryResultAddress").innerText;
-   //const author = listItem.querySelector(".author").innerText;
-
-  //  const listItem3 = document.querySelector(".tb_text_wrap");
-
-   
-  //  //const text = listItem.querySelector(".OMDirectoryResultAddress").innerText;
-  //  //const author = listItem.querySelector(".author").innerText;
-
-   return { map};
+    const map = document.querySelector(".BPAItem");
+    const name = map.querySelector(".BPAOrgName").innerText;
+    const address = map.querySelector(".OMDirectoryResultAddress").innerText;
+    const email = map.querySelector(".OMDirectoryResultCommunication");
+    if (email) {
+      email = email.innerText;
+    }
+    // const phone = map.querySelector(".OMDirectoryResultCommunication").innerText;
+    // const website = map.querySelector(".OMDirectoryResultCommunication").innerText;
+  
+   return { name, address, email};
 
   });
-
-  console.log(list);
  
-
+  console.log(list);
 await browser.close();
 };
 
