@@ -29,14 +29,30 @@ const getSkydiveList = async () => {
     return Array.from(schools).map((school) => {
     const name = school.querySelector(".BPAOrgName").innerText.trim();
     const address = school.querySelector(".OMDirectoryResultAddress").innerText.trim();
-    const email = school.querySelector(".OMDirectoryResultCommunication");
-    // if (email) {
-    //   email = email.innerText;
-    // }
-    // const phone = map.querySelector(".OMDirectoryResultCommunication").innerText;
-    // const website = map.querySelector(".OMDirectoryResultCommunication").innerText;
+
+    //if next is null skip else parse next ones
+    const contactDetails = school.querySelectorAll(".OMDirectoryResultCommunication");
+
+    if (contactDetails.length == 0){
+      const email = "";
+      const tel = "";
+      const web = "";
+      return { name, address, email, tel, web};
+    } else {
+      //return Array.from(contactDetails).map((contact) => {
+      const email = "email";
+      const tel = "tel";
+      const web = "web";
+      
+      return { name, address, email, tel, web};
+        // if (email!==null) {
+        //   email = school.querySelector(".OMDirectoryResultCommunication").innerText.trim();
+        // }
+        
+        // const phone = map.querySelector(".OMDirectoryResultCommunication").innerText;
+        // const website = map.querySelector(".OMDirectoryResultCommunication").innerText;
   
-   return { name, address, email};
+    }
   });
   });
  
